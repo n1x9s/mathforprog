@@ -3,7 +3,7 @@ import math
 import cmath
 import numpy as np
 import matplotlib.pyplot as plt
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QPushButton, QGridLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit, QPushButton, QGridLayout
 
 # Класс калькулятора, наследующий от QWidget
 class Calculator(QWidget):
@@ -14,7 +14,7 @@ class Calculator(QWidget):
     # Инициализация пользовательского интерфейса
     def initUI(self):
         self.setWindowTitle('Calculator')
-        self.setGeometry(100, 100, 400, 400)
+        self.setGeometry(100, 100, 600, 600)  # Увеличиваем размер окна
 
         # Память для хранения значений
         self.memory = [0, 0, 0]
@@ -25,6 +25,7 @@ class Calculator(QWidget):
 
         # Поле для отображения ввода и результата
         self.display = QLineEdit()
+        self.display.setFixedHeight(50)  # Увеличиваем высоту поля ввода
         self.layout.addWidget(self.display)
 
         # Создание кнопок
@@ -52,6 +53,7 @@ class Calculator(QWidget):
         # Создание кнопок и добавление их в макет
         for btnText, x, y in buttons:
             button = QPushButton(btnText)
+            button.setFixedSize(100, 50)  # Увеличиваем размер кнопок
             button.clicked.connect(self.onButtonClick)
             buttonsLayout.addWidget(button, x, y)
 
